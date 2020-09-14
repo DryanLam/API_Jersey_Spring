@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@ApplicationPath("api")
 public class AppConfiguration extends ResourceConfig {
 	public AppConfiguration() {
 		

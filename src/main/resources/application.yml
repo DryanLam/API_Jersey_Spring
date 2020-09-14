@@ -1,11 +1,13 @@
 server:
   port: 7000
-  undertow: 
+  servlet:
+    context-path: /api
+  undertow:
     ioThreads: 15
     workerThreads: 150
-    accesslog: 
+    accesslog:
       enabled: true
-  compression: 
+  compression:
     enabled: true
     mimeTypes: text/xml, text/css, text/html, application/json
     minResponseSize: 4096
@@ -13,3 +15,5 @@ server:
 spring:
   application: 
     name: spring-jersey
+  main:
+    banner-mode: "off"
