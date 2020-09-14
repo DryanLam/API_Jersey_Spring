@@ -1,11 +1,11 @@
-package com.sample.dl.context;
+package com.sample.dl.service;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class ExceptionBuilder implements ExceptionMapper<Throwable> {
+public class ExceptionService implements ExceptionMapper<Throwable> {
 
 	@Override
 	public Response toResponse(Throwable exception) {

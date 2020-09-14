@@ -1,4 +1,4 @@
-package com.sample.dl.service;
+package com.sample.dl.utils.exception;
 
 public class BookNotFoundException extends RuntimeException {
 
