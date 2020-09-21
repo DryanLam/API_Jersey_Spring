@@ -1,6 +1,5 @@
 package com.sample.dl.context;
 
-import com.sample.dl.controller.BookController;
 import com.sample.dl.service.ExceptionService;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.reflections.Reflections;
@@ -12,17 +11,20 @@ import javax.ws.rs.Path;
 
 @Configuration
 public class AppConfiguration extends ResourceConfig {
+//	public AppConfiguration(@HeaderParam("content-type") String contentType) {
 	public AppConfiguration() {
-//		packages("com.sample.dl.controller");
-//		register(ExceptionService.class);
 		scan("com.sample.dl.controller");
+		register(AppFilter.class);
+		register(ExceptionService.class);
 	}
 
 	// Also lay on both methods
 	@PostConstruct
 	public void setUp() {
+//		scan("com.sample.dl.controller");
 //		packages("com.sample.dl.controller");
-		register(ExceptionService.class);
+//		register(AppFilter.class);
+//		register(ExceptionService.class);
 	}
 
 	public void scan(String... packages) {
