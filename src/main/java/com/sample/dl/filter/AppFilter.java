@@ -1,12 +1,8 @@
-package com.sample.dl.context;
-
-
-import org.springframework.stereotype.Service;
+package com.sample.dl.filter;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.PreMatching;
-import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
 
