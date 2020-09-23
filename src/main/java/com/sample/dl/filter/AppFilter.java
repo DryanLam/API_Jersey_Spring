@@ -11,9 +11,10 @@ public class AppFilter implements ContainerRequestFilter  {
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
-        System.out.println("PreMatching filtering ... ");
         String tc = requestContext.getHeaderString("testcase");
-        System.out.println(tc);
+        if(tc != null){
+            System.out.println(tc);
+        }
     }
 
 }

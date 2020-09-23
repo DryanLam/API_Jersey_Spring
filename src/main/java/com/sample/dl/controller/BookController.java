@@ -1,63 +1,45 @@
 package com.sample.dl.controller;
 
-import com.sample.dl.model.Book;
-import com.sample.dl.service.BookService;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-import java.net.URI;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 @Path("/books")
 public class BookController {
-    private BookService bookService;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
+    public BookController() {
+
     }
 
     @GET
     @Produces("application/json")
-    public Collection<Book> getAllBooks() {
-        return bookService.getAllBooks();
+    public Response getAllBooks() {
+        String output = "{'total': '3', 'coast': '2000'}";
+        return Response.status(200).entity(output).build();
     }
 
     @GET
     @Path("/register")
     @Produces("application/json")
-    public Collection<Book> testBookHeader() {
-        return bookService.getAllBooks();
+    public Response testBookHeader() {
+        Map book = new HashMap();
+        book.put("name", "Code Complete");
+        book.put("status", "register");
+        return Response.status(200).entity(book).build();
     }
 
     @GET
     @Produces("application/json")
     @Path("/{oid}")
-    public Book getBook(@PathParam("oid") String oid) {
-        return bookService.getBook(oid);
-    }
-
-    @POST
-    @Produces("application/json")
-    @Consumes("application/json")
-    public Response addBook(Book book) {
-        bookService.addBook(book);
-        return Response.created(URI.create("/" + book.getOid())).build();
-    }
-
-    @PUT
-    @Consumes("application/json")
-    @Path("/{oid}")
-    public Response updateBook(@PathParam("oid") String oid, Book book) {
-        bookService.updateBook(oid, book);
-        return Response.noContent().build();
-    }
-
-    @DELETE
-    @Path("/{oid}")
-    public Response deleteBook(@PathParam("oid") String oid) {
-        bookService.deleteBook(oid);
-        return Response.ok().build();
+    public Response getBook(@PathParam("oid") String oid) {
+        String output = "{'id': '" + oid + "', 'name': 'White Hat Hacking Ethetic'}";
+        return Response.status(200).entity(output).build();
     }
 }
