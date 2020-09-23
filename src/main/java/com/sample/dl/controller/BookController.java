@@ -11,16 +11,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@Path("/books")
+@Path("/book")
 public class BookController {
-
-    public BookController() {
-
-    }
 
     @GET
     @Produces("application/json")
-    public Response getAllBooks() {
+    public Response getBook() {
         String output = "{'total': '3', 'coast': '2000'}";
         return Response.status(200).entity(output).build();
     }
@@ -28,7 +24,7 @@ public class BookController {
     @GET
     @Path("/register")
     @Produces("application/json")
-    public Response testBookHeader() {
+    public Response getBookRegister() {
         Map book = new HashMap();
         book.put("name", "Code Complete");
         book.put("status", "register");
