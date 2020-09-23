@@ -17,7 +17,9 @@ public class BookController {
     @GET
     @Produces("application/json")
     public Response getBook() {
-        String output = "{'total': '3', 'coast': '2000'}";
+        Map output = new HashMap();
+        output.put("total", "3");
+        output.put("cost", "2000");
         return Response.status(200).entity(output).build();
     }
 
@@ -34,8 +36,10 @@ public class BookController {
     @GET
     @Produces("application/json")
     @Path("/{oid}")
-    public Response getBook(@PathParam("oid") String oid) {
-        String output = "{'id': '" + oid + "', 'name': 'White Hat Hacking Ethetic'}";
+    public Response getBookId(@PathParam("oid") String oid) {
+        Map output = new HashMap();
+        output.put("id", oid);
+        output.put("name", "White Hat Hacking Ethetic");
         return Response.status(200).entity(output).build();
     }
 }
