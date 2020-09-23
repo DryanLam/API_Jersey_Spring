@@ -18,17 +18,6 @@ public class BookController {
         this.bookService = bookService;
     }
 
-//    @GET
-//    @Path("/header")
-//    @Produces("application/json")
-//    public Response getHeader(@HeaderParam("testcase") String testCase){
-////    public String getHeader(@HeaderParam("testcase") String testCase){
-////        String output = "User agent :"+ userAgent +" sent :"+length +" bytes";
-//        String output = "{'tc': '" + testCase + "'}";
-//        System.out.println(output);
-//        return Response.status(200).entity(output).build();
-//    }
-
     @GET
     @Produces("application/json")
     public Collection<Book> getAllBooks() {

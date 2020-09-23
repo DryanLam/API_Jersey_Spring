@@ -6,8 +6,6 @@ import javax.ws.rs.container.PreMatching;
 import java.io.IOException;
 
 
-//@Provider
-//@Service
 @PreMatching
 public class AppFilter implements ContainerRequestFilter  {
 
@@ -17,5 +15,6 @@ public class AppFilter implements ContainerRequestFilter  {
         String tc = requestContext.getHeaderString("testcase");
         System.out.println(tc);
     }
+
 }
 
