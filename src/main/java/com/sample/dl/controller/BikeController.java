@@ -16,6 +16,7 @@ public class BikeController {
     @GET
     @Produces("application/json")
     public Response getBike() {
+    	// Comment
         Map bike = new HashMap();
         bike.put("name", "Future");
         bike.put("type", "Road");

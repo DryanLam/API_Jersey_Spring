@@ -109,7 +109,8 @@ def diffParser(List diffFiles) {
 
 
 def methodDetection(String filePath) {
-    def lstLines = new File(filePath).readLines()
+    def file = new File(filePath) 
+    def lstLines = file.readLines()
     def lineSize = lstLines.size()
 
     def lstIndexMethods = lstLines.findIndexValues {
@@ -150,6 +151,11 @@ def methodDetection(String filePath) {
             }
         }
     }
+
+    // Printn method scanned in certain class
+    def fileName = file.parentFile.toURI().relativize(file.toURI()).getPath()
+    println "-------------------------------- $fileName: Method scanning"
+    result.each{println it}
     return result
 }
 
@@ -222,21 +228,34 @@ def testCaseImpacted(def resultAnalysis) {
 }
 
 
-//// Execute detection
+// Execute detection
 // Part 1: Detect changes
 //def sourceGit = "H:/Codebase/Jersey_Spring/"
 def sourceGit = "./"
 def fileDiffs = traceDiff(sourceGit)            // Should detect how many files -> fileDiffs
 def filter = diffParser(fileDiffs)              // Detect multiple files && attach class
 
+println "-------------------------------- Filter: git diff HEAD^..HEAD"
+filter.eachWithIndex{ v, index ->
+    println "Edited area: $index"
+    println v
+}
+
+
+
 // Part 2: Detect method
 def methodImpacted = impactAnalysis(filter, sourceGit).unique()
+println "-------------------------------- Impact method: className.methodName"
+methodImpacted.each{
+    println it
+}
+
 
 // Part 3: Query databse
 def tcIDs = testCaseImpacted(methodImpacted)
 
-
 // Output to Jenkins catch-up
+println "-------------------------------- Impacted TC: Test case ID"
 println(tcIDs)
 
 
