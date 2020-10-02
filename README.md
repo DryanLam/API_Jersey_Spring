@@ -1,4 +1,4 @@
-For trigger
+For trigger master
 http://localhost:7000/api/books
 
 $ maven spring-boot:run
