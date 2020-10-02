@@ -1,4 +1,4 @@
-Test trigger 
+Trigger pipeline
 http://localhost:7000/api/books
 
 $ maven spring-boot:run
