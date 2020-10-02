@@ -154,8 +154,15 @@ def methodDetection(String filePath) {
 
     // Printn method scanned in certain class
     def fileName = file.parentFile.toURI().relativize(file.toURI()).getPath()
-    println "-------------------------------- $fileName: Method scanning"
+    
+    println ""
+    println "Method scanning"
+    println "--------------------------------"
+    println "$fileName"
     result.each{println it}
+    println "--------------------------------"
+    println ""
+    println ""
     return result
 }
 
@@ -245,18 +252,23 @@ filter.eachWithIndex{ v, index ->
 
 // Part 2: Detect method
 def methodImpacted = impactAnalysis(filter, sourceGit).unique()
-println "-------------------------------- Impact method: className.methodName"
+println ""
+println "Impacted method"
+println "--------------------------------"
 methodImpacted.each{
-    println it
+    println " $it"
 }
-
+println "--------------------------------"
+println ""
 
 // Part 3: Query databse
 def tcIDs = testCaseImpacted(methodImpacted)
 
 // Output to Jenkins catch-up
-println "-------------------------------- Impacted TC: Test case ID"
+println "Impacted test cases"
+println "--------------------------------"
 println(tcIDs)
-
+println "--------------------------------"
+println ""
 
 // USE by CLI:  groovy impactDetection.groovy
