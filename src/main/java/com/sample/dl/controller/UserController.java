@@ -16,11 +16,9 @@ public class UserController {
     @GET
     @Produces("application/json")
     public Response getUser() {
-//        String output = "{'name': 'Dryan Lam', 'BU': 'Turing'}";
-
         Map output = new HashMap();
         output.put("name", "Dryan Lam");
-        output.put("BU", "Turing");
+        output.put("role", "admin");
         return Response.status(200).entity(output).build();
     }
 }

@@ -19,22 +19,12 @@ public class AppConfiguration extends ResourceConfig {
 		register(ExceptionService.class);
 	}
 
-	// Also lay on both methods
-	@PostConstruct
-	public void setUp() {
-//		scan("com.sample.dl.controller");
-//		packages("com.sample.dl.controller");
-//		register(AppFilter.class);
-//		register(ExceptionService.class);
-	}
-
 	public void scan(String... packages) {
 		for (String pack : packages) {
 			Reflections reflections = new Reflections(pack);
 			reflections.getTypesAnnotatedWith(Path.class, true)
 					   .parallelStream()
 					   .forEach((clazz) -> {
-//						   logger.info("New resource registered: " + clazz.getName());
 						   register(clazz);
 					   });
 		}

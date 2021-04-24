@@ -1,7 +1,7 @@
 http://localhost:7000/api/books
 
-$ maven spring-boot:run
-$ maven clean packages
+$ mvn spring-boot:run
+$ mvn clean package
 $ java -jar <name>.jar
 >> java -jar Spring-Rest-Jersey-1.0.0-SNAPSHOT.jar
 

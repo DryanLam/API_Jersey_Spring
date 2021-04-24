@@ -35,11 +35,11 @@ public class BookController {
 
     @GET
     @Produces("application/json")
-    @Path("/{oid}")
-    public Response getBookId(@PathParam("oid") String oid) {
+    @Path("/{bid}")
+    public Response getBookId(@PathParam("bid") String bid) {
         Map output = new HashMap();
-        output.put("id", oid);
-        output.put("name", "White Hat Hacking Ethetic");
+        output.put("id", bid);
+        output.put("name", "White Hat Hacking Ethic");
         return Response.status(200).entity(output).build();
     }
 }
