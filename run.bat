@@ -1,0 +1,1 @@
+java -javaagent:hack-agent.jar -jar target/Spring-Rest-Jersey-1.0.0-SNAPSHOT.jar
