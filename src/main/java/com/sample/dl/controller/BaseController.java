@@ -16,9 +16,9 @@ public class BaseController {
     @Produces("application/json")
     @Path("/info")
     public Response appInfo(@HeaderParam("testcase") String testCase) {
-        String greet = "Welcomes to KataConnect event";
+        String greet = "WARNING: This ApP is HACKED!!!";
         System.out.println(greet);
-        String output = "{'greet': '" + greet + "'}";
+        String output = "{'greet': '" + greet + "', 'status': 'hacked'}";
         return Response.status(200).entity(output).build();
     }
 }

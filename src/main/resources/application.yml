@@ -3,8 +3,8 @@ server:
   servlet:
     context-path: /api
   undertow:
-    ioThreads: 15
-    workerThreads: 150
+    ioThreads: 10
+    workerThreads: 10
     accesslog:
       enabled: true
   compression:

@@ -22,6 +22,7 @@ public class Agent {
         ultimateInterceptor(agentArgs, instrumentation);
     }
 
+
     private static void ultimateInterceptor(String arguments, Instrumentation instrumentation) {
         new AgentBuilder.Default()
                 .with(new AgentBuilder.InitializationStrategy.SelfInjection.Eager())
