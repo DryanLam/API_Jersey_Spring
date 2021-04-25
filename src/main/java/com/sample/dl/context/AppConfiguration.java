@@ -14,9 +14,22 @@ import javax.ws.rs.Path;
 public class AppConfiguration extends ResourceConfig {
 //	public AppConfiguration(@HeaderParam("content-type") String contentType) {
 	public AppConfiguration() {
+//		scan("com.sample.dl.controller");
+//		register(AppFilter.class);
+//		register(ExceptionService.class);
+	}
+
+
+	// Also lay on both methods
+	@PostConstruct
+	public void setUp() {
 		scan("com.sample.dl.controller");
 		register(AppFilter.class);
 		register(ExceptionService.class);
+//		scan("com.sample.dl.controller");
+//		packages("com.sample.dl.controller");
+//		register(AppFilter.class);
+//		register(ExceptionService.class);
 	}
 
 	public void scan(String... packages) {
