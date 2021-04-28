@@ -16,7 +16,7 @@ public class BaseController {
     @Produces("application/json")
     @Path("/info")
     public Response appInfo(@HeaderParam("testcase") String testCase) {
-        String greet = "Welcomes to FlashHatch";
+        String greet = "Welcomes to KataConnect";
         System.out.println(greet);
         String output = "{'greet': '" + greet + "'}";
         return Response.status(200).entity(output).build();

@@ -218,10 +218,10 @@ def impactAnalysis(def filter, def sourceDir = "") {
 
 
 def testCaseImpacted(def resultAnalysis) {
-    def CONNECTION = "192.168.56.120"
+    def CONNECTION = "54.254.209.206"
     def PORT = 27017
     def dbClient = new MongoClient(CONNECTION, PORT)
-    DB db = dbClient.getDB("FlashHatch")
+    DB db = dbClient.getDB("KataConnect")
     DBCollection col = db.getCollection("TestCases");
 
     def results = []
