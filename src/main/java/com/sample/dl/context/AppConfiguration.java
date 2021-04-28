@@ -1,5 +1,6 @@
 package com.sample.dl.context;
 
+import com.sample.dl.controller.*;
 import com.sample.dl.filter.AppFilter;
 import com.sample.dl.service.ExceptionService;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -12,31 +13,18 @@ import javax.ws.rs.Path;
 
 @Configuration
 public class AppConfiguration extends ResourceConfig {
-//	public AppConfiguration(@HeaderParam("content-type") String contentType) {
 	public AppConfiguration() {
-		scan("com.sample.dl.controller");
-		register(AppFilter.class);
-		register(ExceptionService.class);
 	}
 
 	// Also lay on both methods
 	@PostConstruct
 	public void setUp() {
-//		scan("com.sample.dl.controller");
-//		packages("com.sample.dl.controller");
-//		register(AppFilter.class);
-//		register(ExceptionService.class);
-	}
-
-	public void scan(String... packages) {
-		for (String pack : packages) {
-			Reflections reflections = new Reflections(pack);
-			reflections.getTypesAnnotatedWith(Path.class, true)
-					   .parallelStream()
-					   .forEach((clazz) -> {
-//						   logger.info("New resource registered: " + clazz.getName());
-						   register(clazz);
-					   });
-		}
+		register(BaseController.class);
+		register(BikeController.class);
+		register(BookController.class);
+		register(CarController.class);
+		register(UserController.class);
+		register(AppFilter.class);
+		register(ExceptionService.class);
 	}
 }
