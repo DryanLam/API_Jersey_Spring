@@ -20,7 +20,7 @@ public class UserController {
 
         Map output = new HashMap();
         output.put("name", "Dryan Lam");
-        output.put("BU", "Turing");
+        output.put("role", "Technical Lead");
         return Response.status(200).entity(output).build();
     }
 }
