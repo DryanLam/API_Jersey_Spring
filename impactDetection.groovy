@@ -225,7 +225,7 @@ def testCaseImpacted(def resultAnalysis) {
     }
     
     def PORT = 27017
-    println(CONNECTION + PORT)
+    println("MongoDB connection: " + CONNECTION + ":"+ PORT)
     def dbClient = new MongoClient(CONNECTION, PORT)
     DB db = dbClient.getDB("KataConnect")
     DBCollection col = db.getCollection("TestCases");
