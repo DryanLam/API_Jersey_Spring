@@ -16,8 +16,6 @@ public class UserController {
     @GET
     @Produces("application/json")
     public Response getUser() {
-//        String output = "{'name': 'Dryan Lam', 'BU': 'Turing'}";
-
         Map output = new HashMap();
         output.put("name", "Dryan Lam");
         output.put("role", "Technical Lead");
