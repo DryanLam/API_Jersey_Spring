@@ -218,7 +218,12 @@ def impactAnalysis(def filter, def sourceDir = "") {
 
 
 def testCaseImpacted(def resultAnalysis) {
-    def CONNECTION = "54.251.60.125"
+    def CONNECTION = "localhost"
+    def host = System.getProperty('mongodb.host')
+    if(host != null){
+        CONNECTION = host
+    }
+    
     def PORT = 27017
     def dbClient = new MongoClient(CONNECTION, PORT)
     DB db = dbClient.getDB("KataConnect")

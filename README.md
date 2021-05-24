@@ -32,3 +32,7 @@ Issue:
 2. Reflections can NOT scan sub-class.
     The major difference between version 0.9.11 and 0.9.12 is that in 0.9.12 Guava dependency was removed in favor of Java 8 Streams API.
     Fixed: Add true to getTypesAnnotatedWith(Path.class, true)
+
+
+IMPACT-ANALYSIS-MONGODB
+ groovy -Dmongodb.host impactDetection.groovy
