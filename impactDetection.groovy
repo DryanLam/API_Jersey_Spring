@@ -218,7 +218,7 @@ def impactAnalysis(def filter, def sourceDir = "") {
 
 
 def testCaseImpacted(def resultAnalysis) {
-    def CONNECTION = "54.254.209.206"
+    def CONNECTION = "54.251.60.125"
     def PORT = 27017
     def dbClient = new MongoClient(CONNECTION, PORT)
     DB db = dbClient.getDB("KataConnect")
@@ -227,8 +227,8 @@ def testCaseImpacted(def resultAnalysis) {
     def results = []
     BasicDBObject query = new BasicDBObject()
     resultAnalysis.each { m ->
-        query.put("coverName", new BasicDBObject("\$in", [m.toString()]))
-        results += col.find(query).toArray().collect { it.tc }
+        query.put("CoverMethods", new BasicDBObject("\$in", [m.toString()]))
+        results += col.find(query).toArray().collect { it.Tags }
     }
     def tcIDs = results.flatten().unique().findAll{it.toString().contains("ID")}
     return tcIDs.join(",");
