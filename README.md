@@ -35,4 +35,4 @@ Issue:
 
 
 IMPACT-ANALYSIS-MONGODB
- groovy -Dmongodb.host impactDetection.groovy
+groovy -Dmongodb.host=192.168.1.2 impactDetection.groovy
