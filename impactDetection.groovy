@@ -155,14 +155,14 @@ def methodDetection(String filePath) {
     // Printn method scanned in certain class
     def fileName = file.parentFile.toURI().relativize(file.toURI()).getPath()
     
-    println ""
-    println "Method scanning"
-    println "--------------------------------"
-    println "$fileName"
-    result.each{println it}
-    println "--------------------------------"
-    println ""
-    println ""
+    // println ""
+    // println "Method scanning"
+    // println "--------------------------------"
+    // println "$fileName"
+    // result.each{println it}
+    // println "--------------------------------"
+    // println ""
+    // println ""
     return result
 }
 
@@ -225,7 +225,7 @@ def testCaseImpacted(def resultAnalysis) {
     }
     
     def PORT = 27017
-    println("MongoDB connection: " + CONNECTION + ":"+ PORT)
+    // println("MongoDB connection: " + CONNECTION + ":"+ PORT)
     def dbClient = new MongoClient(CONNECTION, PORT)
     DB db = dbClient.getDB("KataConnect")
     DBCollection col = db.getCollection("TestCases");
@@ -248,33 +248,33 @@ def sourceGit = "./"
 def fileDiffs = traceDiff(sourceGit)            // Should detect how many files -> fileDiffs
 def filter = diffParser(fileDiffs)              // Detect multiple files && attach class
 
-println "-------------------------------- Filter: git diff HEAD^..HEAD"
-filter.eachWithIndex{ v, index ->
-    println "Edited area: $index"
-    println v
-}
+// println "-------------------------------- Filter: git diff HEAD^..HEAD"
+// filter.eachWithIndex{ v, index ->
+//     println "Edited area: $index"
+//     println v
+// }
 
 
 
 // Part 2: Detect method
 def methodImpacted = impactAnalysis(filter, sourceGit).unique()
-println ""
-println "Impacted method"
-println "--------------------------------"
-methodImpacted.each{
-    println " $it"
-}
-println "--------------------------------"
-println ""
+// println ""
+// println "Impacted method"
+// println "--------------------------------"
+// methodImpacted.each{
+//     println " $it"
+// }
+// println "--------------------------------"
+// println ""
 
 // Part 3: Query databse
 def tcIDs = testCaseImpacted(methodImpacted)
 
 // Output to Jenkins catch-up
-println "Impacted test cases"
-println "--------------------------------"
+// println "Impacted test cases"
+// println "--------------------------------"
 println(tcIDs)
-println "--------------------------------"
-println ""
+// println "--------------------------------"
+// println ""
 
 // USE by CLI:  groovy impactDetection.groovy
