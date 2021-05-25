@@ -50,7 +50,6 @@ public class BookController {
     @DELETE
     @Path("/{oid}")
     public Response deleteBook(@PathParam("oid") String oid) {
-        // For testing 03
         bookService.deleteBook(oid);
         return Response.ok().build();
     }
