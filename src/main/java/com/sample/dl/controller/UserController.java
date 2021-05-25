@@ -18,7 +18,7 @@ public class UserController {
     public Response getUser() {
         Map output = new HashMap();
         output.put("name", "Dryan Lam");
-        output.put("role", "Technical Leads");
+        output.put("role", "Technical Lead");
         return Response.status(200).entity(output).build();
     }
 }
