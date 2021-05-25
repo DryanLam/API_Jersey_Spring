@@ -69,7 +69,7 @@ pipeline {
         
         stage('Test') {
             agent {
-                label 'Test-Win'
+                label 'Test-Win-01'
             }
             steps {
                 git branch: 'kataconnect', credentialsId: '7436167f-f5d5-45f6-ac3e-fd63bfe1c5b8', url: 'https://github.com/DryanLam/Kat.git'
@@ -77,6 +77,15 @@ pipeline {
                 bat "katalonc -noSplash -runMode=console -projectPath=\"${env.WORKSPACE}\\KataConnect.prj\" -testSuitePath=\"Test Suites/Regression\" -browserType=\"Chrome\" -apiKey=9e5b8d61-eb77-4038-8225-eb7fe6341ea1 -g_API_URL=\"http://52.77.177.13:7000/api\" -g_TAGS=\"${impactedTC}\" --config -webui.autoUpdateDrivers=true"
             }
         }// End - Test
+
+        stage('TearDown') {
+            agent {
+                label 'Test-Linux'
+            }
+            steps {
+                sh "docker rm -f \$(docker ps -q)"
+            }
+        }// End -Clean
         
     }
 }
